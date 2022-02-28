@@ -1,5 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter_desktop/screen/all_button_screen.dart';
+import 'package:flutter_desktop/screen/icons_screen.dart';
+import 'package:flutter_desktop/screen/others_screen.dart';
+import 'package:flutter_desktop/screen/form_screen.dart';
+import 'package:flutter_desktop/screen/inputs_screen.dart';
+import 'package:flutter_desktop/screen/mobile_screen.dart';
+import 'package:flutter_desktop/screen/typography.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -52,18 +57,30 @@ class _MyHomePageState extends State<MyHomePage> {
           PaneItemHeader(header: const Text("This is Header of Item")),
           PaneItem(
             icon: const Icon(FluentIcons.machine_learning),
-            title: const Text("Page 0"),
+            title: const Text("Mobile"),
             infoBadge: const InfoBadge(
-              source: Text("This is InfoBadge"),
+              source: Text("2"),
             ),
           ),
           PaneItem(
             icon: const Icon(FluentIcons.account_management),
-            title: const Text("Page 1"),
+            title: const Text("Inputs"),
           ),
           PaneItem(
             icon: const Icon(FluentIcons.ctrl_button),
-            title: const Text("Button"),
+            title: const Text("Others"),
+          ),
+          PaneItem(
+            icon: const Icon(FluentIcons.ctrl_button),
+            title: const Text("Form"),
+          ),
+                PaneItem(
+            icon: const Icon(FluentIcons.ctrl_button),
+            title: const Text("Typography"),
+          ),
+                          PaneItem(
+            icon: const Icon(FluentIcons.ctrl_button),
+            title: const Text("Icons"),
           ),
         ],
         footerItems: [
@@ -89,43 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
       //content body
       content: NavigationBody(
         index: _selectIndex,
-        children: [
-          //call a widget
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '$_counter',
-                ),
-                Button(
-                  onPressed: _incrementCounter,
-                  child: const Icon(FluentIcons.add),
-                ),
-              ],
-            ),
-          ),
+        children: const [
+            MobilePage(),
           //call ScaffoldPage
-          const ScaffoldPage(
-              content: Center(child: Text("Page 1")),
-              header: Text('ScaffoldPage Header'),
-              bottomBar: Text('ScaffoldPage bottomBar'),
-              padding: EdgeInsets.all(20),
-              ),
-            //call a page
-          const  AllButtonPage(),
-          const ScaffoldPage(
-            content: Center(child: Text("Page 3")),
+         InputsPage(),
+          //call a page
+           OthersPage(),
+           FormPage(),
+         TypographyPage(),
+         IconsPage(),
+          ScaffoldPage(
+            content: Center(child: Text("Page Last")),
+            header: Text('ScaffoldPage Header'),
+            bottomBar: Text('ScaffoldPage bottomBar'),
+            padding: EdgeInsets.all(20),
           ),
-          const ScaffoldPage(
-            content: Center(child: Text("Page 4")),
-          ),
-          const ScaffoldPage(
-            content: Center(child: Text("Page 5")),
-          ),
+          
         ],
       ),
     );
