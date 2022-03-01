@@ -27,11 +27,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return NavigationView(
+
       appBar: NavigationAppBar(
           title: Text(widget.title),
           leading: const Icon(FluentIcons.alarm_clock),
           backgroundColor: Colors.blue,
           actions: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: const [
               Icon(FluentIcons.admin_a_logo_inverse32),
               Icon(FluentIcons.document_management),
@@ -40,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )),
       pane: NavigationPane(
         selected: _selectIndex,
+        
         onChanged: (newIndex) {
           setState(() {
             _selectIndex = newIndex;
@@ -74,11 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(FluentIcons.ctrl_button),
             title: const Text("Form"),
           ),
-                PaneItem(
+          PaneItem(
             icon: const Icon(FluentIcons.ctrl_button),
             title: const Text("Typography"),
           ),
-                          PaneItem(
+          PaneItem(
             icon: const Icon(FluentIcons.ctrl_button),
             title: const Text("Icons"),
           ),
@@ -107,21 +110,20 @@ class _MyHomePageState extends State<MyHomePage> {
       content: NavigationBody(
         index: _selectIndex,
         children: const [
-            MobilePage(),
+          MobilePage(),
           //call ScaffoldPage
-         InputsPage(),
+          InputsPage(),
           //call a page
-           OthersPage(),
-           FormPage(),
-         TypographyPage(),
-         IconsPage(),
+          OthersPage(),
+          FormPage(),
+          TypographyPage(),
+          IconsPage(),
           ScaffoldPage(
             content: Center(child: Text("Page Last")),
             header: Text('ScaffoldPage Header'),
             bottomBar: Text('ScaffoldPage bottomBar'),
             padding: EdgeInsets.all(20),
           ),
-          
         ],
       ),
     );

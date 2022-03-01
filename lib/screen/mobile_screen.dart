@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_desktop/screen/navigate_page.dart';
+import 'package:flutter_desktop/screen/typography.dart';
 
 class MobilePage extends StatefulWidget {
   const MobilePage({Key? key}) : super(key: key);
@@ -86,7 +88,9 @@ class _MobilePageState extends State<MobilePage> {
             ),
             text: Text('Disabled'),
             // Comment the onPressed function to disable the chip
-            // onPressed: () => print('pressed chip'),
+//             onPressed: () {
+// Navigator.push(context, FluentPageRoute(builder: (context) => const TypographyPage()));
+//             },
           ),
           Chip.selected(
             image: const CircleAvatar(
@@ -94,7 +98,14 @@ class _MobilePageState extends State<MobilePage> {
               child: FlutterLogo(size: 14.0),
             ),
             text: const Text('Active and selected'),
-            onPressed: () => print('pressed selected chip'),
+            onPressed: () {
+              // Navigator.push(
+              //     context,
+              //     FluentPageRoute(
+              //       fullscreenDialog: true,
+              //         builder: (context) =>  CarsPageNavigator( navigatorKey: GlobalKey<NavigatorState>(),)));
+              Navigator.pushNamed(context, '/nav');
+            },
           ),
           const Chip.selected(
             image: CircleAvatar(
@@ -107,7 +118,6 @@ class _MobilePageState extends State<MobilePage> {
           ),
         ]),
         biggerSpacer,
-
         Text(
           'Snackbar',
           style: FluentTheme.of(context).typography.subtitle,
